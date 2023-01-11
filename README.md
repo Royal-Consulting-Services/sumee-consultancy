@@ -1,1 +1,2 @@
-# sumee-consultancy
+php
+login http://localhost/phpmyadmin/index.php
