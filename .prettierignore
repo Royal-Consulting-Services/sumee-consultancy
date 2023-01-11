@@ -1,0 +1,8 @@
+# Ignore artifacts:
+build
+
+# Ignore php:
+php
+
+# Ignore query:
+php
