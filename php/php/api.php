@@ -11,12 +11,12 @@ use Firebase\JWT\JWT;
 
 
 if(!array_key_exists('action',$_REQUEST)) {
-
+    
     $response = array('statusCode'=>404,'message'=>"Invalid request");
-
+    
     sendResponse($response);
 
-    return;
+    return; 
 }
 
 $action = $_REQUEST['action'];
@@ -39,8 +39,8 @@ if($action=='login'){
                             "exp"=>(time()+600)
                         );
 
-        $secretKey = "ganga1!@#$%_bugga%^&*()!_secret^&*()_Key)(*&^";
-
+        $secretKey = "ganga1!@#$%_bugga%^&*()!_secret^&*()_Key)(*&^";                
+        
         $JWT =  JWT::encode($payLoad, $secretKey, 'HS512');
 
         $response = array('statusCode'=>200,'message'=>"Login successful", "data"=>array('authToken'=>$JWT));
@@ -48,21 +48,21 @@ if($action=='login'){
 
     } else {
 
-        $response = array('statusCode'=>400,'message'=>"Incorrect credentials");
+        $response = array('statusCode'=>400,'message'=>"Username or Password are incorrect");
         sendResponse($response);
-    }
+    }    
 
 }
 
 if($action=='register'){
-
+    
 
     $request = json_decode(file_get_contents("php://input"), true);
 
     $CheckQuery = "select `userName` from user where `userName`='".$request['userName']."'";
 
     $result = $conn->query($CheckQuery);
-
+    
     if ($result !== false && $result->num_rows > 0) {
 
         $response = array('statusCode'=>201,'message'=>"user already exists");
@@ -74,7 +74,8 @@ if($action=='register'){
         $Query = "insert into user (userName,firstName, lastName, email, phone, role, password) values ('".$request['userName']."','".$request['firstName']."','".$request['lastName']."','".$request['email']."','".$request['phone']."','".$request['role']."','".$request['password']."')";
         if ($result = $conn->query($Query) === TRUE){
 
-            $response = array('statusCode'=>200,'message'=>"user created successfully");
+            $response = array('statusCode'=>200,'message'=>"User created successfully'
+");
             sendResponse($response);
         } else {
 
@@ -99,7 +100,7 @@ if($action=='getAllUsers'){
     if ($result !== false && $result->num_rows > 0) {
 
         $Users = array();
-
+        
         while($row = mysqli_fetch_assoc($result)) {
             $Users[] = $row;
         }
@@ -112,7 +113,7 @@ if($action=='getAllUsers'){
 
         $response = array('statusCode'=>400,'message'=>"No Data Found");
         sendResponse($response);
-    }
+    }    
 
 }
 
@@ -136,7 +137,7 @@ if($action=='getUserByUserName'){
 
         $response = array('statusCode'=>400,'message'=>"Incorrect data");
         sendResponse($response);
-    }
+    }    
 
 }
 
@@ -150,10 +151,10 @@ if($action=='updateUser'){
 
     if ($result = $conn->query($Query) === TRUE){
 
-        $response = array('statusCode'=>200,'message'=>"user updated successfully");
+        $response = array('statusCode'=>200,'message'=>"User updated successfully");
         sendResponse($response);
     } else {
-`
+
         $response = array('statusCode'=>500,'message'=>"Can't update user");
         sendResponse($response);
     }
@@ -169,14 +170,14 @@ if($action=='deleteUser'){
 
     if ($result = $conn->query($Query) === TRUE) {
 
-        $response = array('statusCode'=>200,'message'=>"Users deleted successfully");
+        $response = array('statusCode'=>200,'message'=>"User deleted successfully");
         sendResponse($response);
 
     } else {
 
         $response = array('statusCode'=>400,'message'=>"Incorrect data");
         sendResponse($response);
-    }
+    }    
 
 }
 
