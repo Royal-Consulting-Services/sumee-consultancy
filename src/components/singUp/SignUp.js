@@ -108,16 +108,13 @@ function SignUp(props) {
           email: inputValues.email,
           phone: inputValues.mobile,
           password: inputValues.passWord,
+          role: 'user',
         }),
       })
         .then((res) => res.json())
-        .then(() => {
-          setRegMessage(
-            'Successfully Completed Your Registration, You Can Login Now!'
-          );
-          props.successMessage(
-            'Successfully Completed Your Registration, You Can Login Now!'
-          );
+        .then((res) => {
+          setRegMessage(res.message);
+          props.successMessage(res.message);
           loginNavigate('/login');
           setInputValues({
             userName: '',
@@ -130,7 +127,7 @@ function SignUp(props) {
         })
         .catch(() => {
           setRegMessage('Registration operation failed');
-          props.successMessage('Registration operation failed !');
+          props.successMessage('Registration operation failed');
           loginNavigate('/login');
           setInputValues({
             userName: '',

@@ -102,9 +102,7 @@ function Header(props) {
     })
       .then((res) => res.json())
       .then((res) => {
-        setRegMessage(
-          'Successfully Completed Your Registration, You Can Login Now!'
-        );
+        setRegMessage(res.message);
         setFormType('login');
         setInputValues({
           userName: '',

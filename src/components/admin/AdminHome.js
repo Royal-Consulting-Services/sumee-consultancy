@@ -25,11 +25,8 @@ import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 function AdminHome(props) {
-
   const stringifiedPerson = JSON.parse(localStorage.getItem('user-info'));
   const loginNavigate = useNavigate();
-
-
 
   const [userList, setUserList] = useState([]);
   const [filterList, setFilterList] = useState([]);
@@ -40,12 +37,11 @@ function AdminHome(props) {
   const [mobile, setMobile] = useState('');
   const [passWord, setPassWord] = useState('');
   const [userName, setUserName] = useState('');
+  const [role, setRole] = useState('admin');
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
   const [showConfirmation, setshowConfirmation] = useState(false);
   const [selectedItem, setSelectedItem] = useState([]);
-
-
 
   const AddUserOpen = () => {
     setAddUserPnl(true);
@@ -76,6 +72,7 @@ function AdminHome(props) {
     setMobile(data.phone);
     setPassWord(data.password);
     setUserName(data.userName);
+    setRole(data.role);
   }
   async function deleteConfirm(item) {
     setshowConfirmation(true);
@@ -117,6 +114,7 @@ function AdminHome(props) {
           email: email,
           phone: mobile,
           password: passWord,
+          role: role,
         }),
       }
     )
@@ -160,8 +158,8 @@ function AdminHome(props) {
   let AddUserData = () => {
     if (
       (userName !== '' && firstName !== '' && lastName !== '',
-        email !== '',
-        mobile !== '' && passWord !== '')
+      email !== '',
+      mobile !== '' && passWord !== '')
     ) {
       fetch('http://localhost/php/api.php?action=register', {
         method: 'POST',
@@ -176,6 +174,7 @@ function AdminHome(props) {
           email: email,
           phone: mobile,
           password: passWord,
+          role: 'user',
         }),
       })
         .then((res) => res.json())
@@ -194,7 +193,6 @@ function AdminHome(props) {
   };
   useEffect(() => {
     getData();
-
   }, []);
   async function getData() {
     const response = await fetch(
@@ -264,33 +262,27 @@ function AdminHome(props) {
     </tr>
   ));
 
-
   const isNotAdmin = stringifiedPerson === null;
   return (
-
     <>
       <Container fluid>
         {isNotAdmin ? (
-
           <div>
-            <p
-            >
-              You dont have persmmison , please login Here
-            </p>
-            <Button
-              variant='link'
-
-              onClick={() => loginNavigate('/login')}
-            >
+            <p>You dont have persmmison , please login Here</p>
+            <Button variant='link' onClick={() => loginNavigate('/login')}>
               Sign Up
             </Button>
-          </div>) :
+          </div>
+        ) : (
           <Row style={{ marginTop: '60px' }}>
             {!props.menuToggle && (
               <Col
                 xs={12}
                 md={3}
-                style={{ boxShadow: '1px 0px 5px 0px #403c4329', padding: '0px' }}
+                style={{
+                  boxShadow: '1px 0px 5px 0px #403c4329',
+                  padding: '0px',
+                }}
               >
                 <ListGroup className='side-menu'>
                   <ListGroup.Item>
@@ -321,7 +313,9 @@ function AdminHome(props) {
                     menuLink={USERTABLEMENU}
                     type={'table'}
                     fluid={true}
-                    inputonChange={(e) => requestSearch(e.target.value, userList)}
+                    inputonChange={(e) =>
+                      requestSearch(e.target.value, userList)
+                    }
                   />
                   <Table responsive='xl'>
                     <thead>
@@ -341,7 +335,7 @@ function AdminHome(props) {
               </>
             </Col>
           </Row>
-        }
+        )}
       </Container>
 
       {addUserPnl && (
