@@ -119,7 +119,7 @@ function App() {
             element={<SignUp successMessage={(e) => successMessage(e)} />}
           />
         </Routes>
-        <Footer type={userLogin === 'admin' ? 'admin' : ''} />
+        <Footer type={userLogin === 'admin' ? true : false} />
       </BrowserRouter>
     </Provider>
   );
