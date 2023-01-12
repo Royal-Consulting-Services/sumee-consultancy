@@ -55,6 +55,15 @@ function Footer(props) {
     return (
       <Container fluid className='main-footer mt-5'>
         <>
+        <Button
+          variant='link'
+          onClick={topFunction}
+          id='myBtn'
+          className={showBtn}
+          title='Go to top'
+        >
+          <FontAwesomeIcon icon={faChevronCircleUp} className='Edit-icon' />
+        </Button>
           <Row>
             <Col xs={12} md={6}>
               <p className='foo-content-text'>

@@ -10,6 +10,7 @@ import {
   Button,
   Alert,
   Modal,
+  Badge,
 } from 'react-bootstrap';
 import { HeaderConnect } from '../header';
 import PhoneInput from 'react-phone-input-2';
@@ -317,10 +318,13 @@ function AdminHome(props) {
                       requestSearch(e.target.value, userList)
                     }
                   />
+                  <div  style={{ display: 'flext', justifyContent: 'end' }}>
+                    Total users : <Badge bg='secondary'>{users.length}</Badge>
+                  </div>
                   <Table responsive='xl'>
                     <thead>
                       <tr>
-                        <th>#</th>
+                        <th># </th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>User Name</th>

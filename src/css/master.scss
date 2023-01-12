@@ -221,6 +221,7 @@ body {
 
   .foo-content-text {
     font-size: 20px;
+    margin-top: 16px;
   }
 
   .list-group.list-group-horizontal.foo-social-icon {
@@ -646,6 +647,7 @@ body {
 
 .login-bg {
   padding-left: 0;
+  cursor: pointer;
   .page-close {
     position: fixed;
     top: 10px;
@@ -677,6 +679,7 @@ body {
 
 .signup-bg {
   padding-left: 0;
+  cursor: pointer;
   .page-close {
     position: fixed;
     top: 10px;
