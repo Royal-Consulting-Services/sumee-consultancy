@@ -10,7 +10,7 @@ import {
   Alert,
   Modal,
 } from 'react-bootstrap';
-import Header from './header/Header';
+import { HeaderConnect } from '../header';
 import PhoneInput from 'react-phone-input-2';
 import {
   faAdd,
@@ -319,7 +319,7 @@ function AdminHome(props) {
                 </Alert>
               )}
               <div className='scroll-content'>
-                <Header
+                <HeaderConnect
                   menuLink={USERTABLEMENU}
                   type={'table'}
                   fluid={true}
@@ -353,7 +353,10 @@ function AdminHome(props) {
             <FontAwesomeIcon
               icon={faClose}
               className={'panel-close'}
-              onClick={() => (setAddUserPnl(false), setSelectedItem([]))}
+              onClick={() => () => {
+                setAddUserPnl(false);
+                setSelectedItem([]);
+              }}
             />
             <h4 className='panel-header content-heading'>
               {selectedItem.userName ? 'Edit User' : 'Add User'}
@@ -507,4 +510,5 @@ const mapStateToProps = (state) => ({
   menuToggle: state.menuToggle,
 });
 
-export default connect(mapStateToProps, '')(AdminHome);
+const Admin = connect(mapStateToProps, '')(AdminHome);
+export { Admin };

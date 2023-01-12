@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Home from './components/Home';
+import { Home } from './components/home';
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/master.scss';
-import AdminHome from './components/AdminHome';
-import SSHome from './components/SSHome';
-import Service from './components/Service';
-import Careers from './components/Careers';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import store from './store/store';
-import { Provider } from 'react-redux';
-import Contact from './components/Contact';
-import AboutUs from './components/AboutUs';
-import Consulting from './components/Consulting';
-import Header from './components/header/Header';
 import { MENULINK, ADMINMENULINK } from './content';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
-import Footer from './components/footer/Footer';
+import { Provider } from 'react-redux';
+import { Contact } from './components/contact';
+import { AboutUs } from './components/about';
+import { Consulting } from './components/consulting';
+
+import { Login } from './components/login';
+import { SignUp } from './components/singUp';
+import { Footer } from './components/footer';
+import { SSHome } from './components/user';
+import { Service } from './components/service';
+import { Careers } from './components/careers';
+
+import { Admin } from './components/admin';
+import { HeaderConnect } from './components/header';
 
 function App() {
   const stringifiedPerson = JSON.parse(localStorage?.getItem('user-info'));
@@ -58,7 +61,7 @@ function App() {
       <BrowserRouter>
         <>
           {userLogin === 'admin' ? (
-            <Header
+            <HeaderConnect
               menuLink={ADMINMENULINK}
               className={'app-header'}
               type={'adminpage'}
@@ -68,7 +71,7 @@ function App() {
               clickEvent={() => homeCallback()}
             />
           ) : userLogin && userLogin !== 'admin' ? (
-            <Header
+            <HeaderConnect
               menuLink={MENULINK}
               selectedMenu={url === '/' ? 'home' : url.replace('/', '')}
               className={'app-header'}
@@ -78,7 +81,7 @@ function App() {
               clickEvent={() => homeCallback()}
             />
           ) : (
-            <Header
+            <HeaderConnect
               menuLink={MENULINK}
               selectedMenu={url === '/' ? 'home' : url.replace('/', '')}
               className={'app-header'}
@@ -100,7 +103,7 @@ function App() {
               element={<Home clickedItem={(e) => itemClick(e)} />}
             />
             <Route index element={<Home />} />
-            <Route path='/admin' element={<AdminHome />} />
+            <Route path='/admin' element={<Admin />} />
             <Route path='/self' element={<SSHome />} />
             <Route path='/aboutus' element={<AboutUs />} />
             <Route

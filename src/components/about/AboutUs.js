@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import { Coreimg, Aboutusimg } from '../images/images';
+import { Coreimg, Aboutusimg } from '../../images/images';
 import { faBriefcase, faEye, faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'react-bootstrap/Image';
-import { AboutBnr } from '../images/images';
+import { AboutBnr } from '../../images/images';
 
 function AboutUs() {
   return (
@@ -163,10 +163,11 @@ function AboutUs() {
                     <p className='help-content'>
                       Fill out the short form on our{' '}
                       <a href='/contact'>Contact Us</a> page give us call
-                      directly on <a href=''>+1 678-384-9757</a> or email us at{' '}
-                      <a href=''> info@sumeeconsulting.com</a> We’ll guide you
-                      through our process, advise on the best possible solutions
-                      and steer you in the right direction.{' '}
+                      directly on <a href='/contact'>+1 678-384-9757</a> or
+                      email us at{' '}
+                      <a href='/contact'> info@sumeeconsulting.com</a> We’ll
+                      guide you through our process, advise on the best possible
+                      solutions and steer you in the right direction.{' '}
                     </p>
                   </Card.Text>
                 </Card.Body>
@@ -179,4 +180,4 @@ function AboutUs() {
   );
 }
 
-export default AboutUs;
+export { AboutUs };

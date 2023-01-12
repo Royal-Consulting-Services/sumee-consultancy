@@ -1,5 +1,6 @@
 import { faClose, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { LoginLogoutBnr } from '../../images/images';
 import React, { useState, useEffect } from 'react';
 import {
   Button,
@@ -11,7 +12,6 @@ import {
   InputGroup,
 } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { LoginLogoutBnr } from '../images/images';
 
 function Login(props) {
   const [userName, setUserName] = useState('');
@@ -26,7 +26,7 @@ function Login(props) {
   const loginUser = stringifiedPerson?.loggedinUser?.userName;
   console.log(loginUser);
   async function loginSubmit() {
-    if (userName !== '' && password != '') {
+    if (userName !== '' && password !== '') {
       console.log(userName, password);
       let item = { userName, password };
       let result = await fetch('http://localhost/php/api.php?action=login', {
@@ -120,7 +120,6 @@ function Login(props) {
                     <InputGroup.Text id='basic-addon1'>
                       <FontAwesomeIcon
                         icon={!showPassword ? faEye : faEyeSlash}
-                        // className={"page-close"}
                         onClick={() => setShowPassword(!showPassword)}
                       />
                     </InputGroup.Text>
@@ -139,7 +138,6 @@ function Login(props) {
               style={{
                 color: '#ffffff',
                 margin: '0px auto 20px auto',
-                // textAlign: "center",
               }}
             >
               Please Sign Up Here
@@ -160,4 +158,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export { Login };

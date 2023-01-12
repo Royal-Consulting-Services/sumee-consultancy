@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, ListGroup, Button } from 'react-bootstrap';
-import { Careerbnr } from '../images/images';
+import { Careerbnr } from '../../images/images';
 import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'react-bootstrap/Image';
@@ -329,4 +329,4 @@ function Careers() {
   );
 }
 
-export default Careers;
+export { Careers };

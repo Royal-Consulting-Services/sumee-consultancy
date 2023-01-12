@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Nav, Tab } from 'react-bootstrap';
-import { SERVICES } from '../content';
-import { Webervicebnr } from '../images/images';
+import { SERVICES } from '../../content';
+import { Webervicebnr } from '../../images/images';
 
 import Image from 'react-bootstrap/Image';
 
@@ -54,4 +54,4 @@ function Service(props) {
   );
 }
 
-export default Service;
+export { Service };

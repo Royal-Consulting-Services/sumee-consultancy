@@ -8,8 +8,8 @@ import {
   Button,
   Image,
 } from 'react-bootstrap';
-import { SLIDERS, SERVICES } from '../content';
-import { Blog4, Blog1, Blog2, Aboutusimg } from '../images/images';
+import { SLIDERS, SERVICES } from '../../content';
+import { Blog1, Blog2, Aboutusimg, Blog3 } from '../../images/images';
 
 const slides = SLIDERS.map((slider) => {
   return (
@@ -22,16 +22,10 @@ const slides = SLIDERS.map((slider) => {
     </Carousel.Item>
   );
 });
-
-function Home(props) {
+function SSHome() {
   const [playAuto, setPlayAuto] = useState(false);
   const slideStart = () => {
     setPlayAuto(!playAuto);
-  };
-
-  const serviceClicked = (e, item) => {
-    console.log(item.title);
-    props.clickedItem(item);
   };
 
   return (
@@ -77,14 +71,11 @@ function Home(props) {
         </Row>
         <Row style={{ marginTop: '50px' }}>
           <h3 className={'mt-5 mb-5 content-heading'}>
-            <span>Services</span>
+            <span>Service Offers</span>
           </h3>
           {SERVICES.map((item) => (
             <Col xs={12} md={3} style={{ padding: '0px' }}>
-              <Card
-                className='technology-card'
-                onClick={(e) => serviceClicked(e, item)}
-              >
+              <Card className='technology-card'>
                 <Card.Body>
                   <Card.Title style={{ textAlign: 'center', height: '50px' }}>
                     {item.title}
@@ -151,7 +142,7 @@ function Home(props) {
           <Col xs={12} md={4}>
             <Card className='client-card'>
               <div className='client-card-img'>
-                <Card.Img variant='top' src={Blog4} />
+                <Card.Img variant='top' src={Blog3} />
               </div>
               <Card.Body>
                 <Card.Title>Tools and Automation support</Card.Title>
@@ -171,4 +162,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export { SSHome };

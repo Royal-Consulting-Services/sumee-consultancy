@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Container, Form, Row, Col, Image } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { LoginLogoutBnr } from '../images/images';
+import { LoginLogoutBnr } from '../../images/images';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
@@ -152,7 +152,7 @@ function SignUp(props) {
         });
     }
   };
-  //handle submit updates
+
   function handleChange(event) {
     const { name, value } = event.target;
     setInputValues({ ...inputValues, [name]: value });
@@ -291,7 +291,6 @@ function SignUp(props) {
               style={{
                 color: '#ffffff',
                 margin: '0px auto 20px auto',
-                // textAlign: "center",
               }}
             >
               Already have a account login here
@@ -312,4 +311,4 @@ function SignUp(props) {
   );
 }
 
-export default SignUp;
+export { SignUp };

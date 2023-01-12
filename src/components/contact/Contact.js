@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import { ContactBnr } from '../images/images';
+import { ContactBnr } from '../../images/images';
 import {
   faLocationDot,
   faPhone,
@@ -66,4 +66,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export { Contact };

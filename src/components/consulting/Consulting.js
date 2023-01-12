@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import Image from 'react-bootstrap/Image';
 import {
   Blog1,
   Blog2,
@@ -10,10 +11,8 @@ import {
   Blog6,
   Blog7,
   Blog8,
-} from '../images/images';
-import Footer from './footer/Footer';
-
-import Image from 'react-bootstrap/Image';
+} from '../../images/images';
+import { Footer } from '../footer';
 
 function Consulting() {
   return (
@@ -183,4 +182,4 @@ function Consulting() {
   );
 }
 
-export default Consulting;
+export { Consulting };

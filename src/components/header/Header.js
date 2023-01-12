@@ -706,4 +706,5 @@ const mapDispatchToProps = (dispatch) => ({
   menuClick: () => dispatch(menuClick()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+const HeaderConnect = connect(mapStateToProps, mapDispatchToProps)(Header);
+export { HeaderConnect };

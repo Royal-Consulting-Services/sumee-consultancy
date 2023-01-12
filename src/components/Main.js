@@ -1,14 +1,16 @@
 import React from 'react';
-import Home from './Home';
-import 'bootstrap/dist/css/bootstrap.css';
-import '../css/master.scss';
-import AdminHome from './AdminHome';
 import { Routes, Route } from 'react-router-dom';
 import { MENULINK, ADMINMENULINK } from '../content';
-import Header from './header/Header';
-import Service from './Service';
 
-function Main(props) {
+import { Header } from './header';
+import { Service } from './service';
+import { Home } from './home';
+import { AdminHome } from './admin';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import '../css/master.scss';
+
+function Main() {
   const stringifiedPerson = JSON.parse(localStorage.getItem('user-info'));
   const loginUser = stringifiedPerson?.loggedinUser?.userName;
   console.log(loginUser);
@@ -41,4 +43,4 @@ function Main(props) {
   );
 }
 
-export default Main;
+export { Main };
