@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useEffect } from 'react';
 import {
   Table,
@@ -21,8 +22,15 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function AdminHome(props) {
+
+  const stringifiedPerson = JSON.parse(localStorage.getItem('user-info'));
+  const loginNavigate = useNavigate();
+
+
+
   const [userList, setUserList] = useState([]);
   const [filterList, setFilterList] = useState([]);
   const [addUserPnl, setAddUserPnl] = useState(false);
@@ -37,6 +45,8 @@ function AdminHome(props) {
   const [showConfirmation, setshowConfirmation] = useState(false);
   const [selectedItem, setSelectedItem] = useState([]);
 
+
+
   const AddUserOpen = () => {
     setAddUserPnl(true);
     setFirstName('');
@@ -45,10 +55,8 @@ function AdminHome(props) {
     setMobile('');
     setPassWord('');
     setUserName('');
-    // setRole("");
   };
   async function editUserOpen(item) {
-    console.log('----- edit', item);
     setAddUserPnl(true);
     const response = await fetch(
       `http://localhost/php/api.php?action=getUserByUserName&userName=${item.userName}`,
@@ -56,8 +64,6 @@ function AdminHome(props) {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          //Authorization: stringifiedPerson.data.authToken,
-          //&&`Bearer ${stringifiedPerson.data.authToken}`,
         },
       }
     );
@@ -70,10 +76,8 @@ function AdminHome(props) {
     setMobile(data.phone);
     setPassWord(data.password);
     setUserName(data.userName);
-    // setUserName(data.role);
   }
   async function deleteConfirm(item) {
-    console.log('-------delete confirm ', item);
     setshowConfirmation(true);
     const response = await fetch(
       `http://localhost/php/api.php?action=getUserByUserName&userName=${item.userName}`,
@@ -81,8 +85,6 @@ function AdminHome(props) {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          //Authorization: stringifiedPerson.data.authToken,
-          //&&`Bearer ${stringifiedPerson.data.authToken}`,
         },
       }
     );
@@ -100,7 +102,6 @@ function AdminHome(props) {
   ];
 
   let UpdateUserData = (item) => {
-    console.log('------update user', item);
     fetch(
       `http://localhost/php/api.php?action=updateUser&userName=${item.userName}`,
       {
@@ -108,8 +109,6 @@ function AdminHome(props) {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          //Authorization: stringifiedPerson.data.authToken,
-          //&&  `Bearer ${stringifiedPerson.data.authToken}`,
         },
         body: JSON.stringify({
           userName: userName,
@@ -118,51 +117,51 @@ function AdminHome(props) {
           email: email,
           phone: mobile,
           password: passWord,
-          // role: role,
         }),
       }
     )
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setAddUserPnl(false);
         getData();
         setMessage(res.message);
         setMessageType('success');
       })
-      .catch((error) => {
-        console.log('error', error);
+      .catch(() => {
         setAddUserPnl(false);
-        getData();
+        setMessageType('danger');
+        setMessage('update operation failed');
       });
   };
   let DeleteUserData = (userName) => {
-    console.log('----delete user', userName);
     fetch(
       `http://localhost/php/api.php?action=deleteUser&userName=${userName}`,
       {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          // Authorization: stringifiedPerson.data.authToken,
-          //&&   `Bearer ${stringifiedPerson.data.authToken}`,
         },
       }
     )
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setshowConfirmation(false);
         getData();
         setMessage(res.message);
         setMessageType('success');
+      })
+      .catch(() => {
+        setAddUserPnl(false);
+        setshowConfirmation(false);
+        setMessageType('danger');
+        setMessage('delete operation failed');
       });
   };
   let AddUserData = () => {
     if (
       (userName !== '' && firstName !== '' && lastName !== '',
-      email !== '',
-      mobile !== '' && passWord !== '')
+        email !== '',
+        mobile !== '' && passWord !== '')
     ) {
       fetch('http://localhost/php/api.php?action=register', {
         method: 'POST',
@@ -177,7 +176,6 @@ function AdminHome(props) {
           email: email,
           phone: mobile,
           password: passWord,
-          // role: "role",
         }),
       })
         .then((res) => res.json())
@@ -187,32 +185,17 @@ function AdminHome(props) {
           setMessage(res.message);
           setMessageType('success');
         })
-        .catch((error) => {
-          console.log('error', error);
+        .catch(() => {
           setAddUserPnl(false);
-          getData();
-          // setMessage(res.message);
-          setMessageType('success');
+          setMessageType('danger');
+          setMessage('add user operation failed');
         });
     }
   };
   useEffect(() => {
     getData();
-    document.getElementsByClassName('scroll-content')[0].style.height =
-      window.innerHeight - 110 + 'px';
-    if (message) {
-      setTimeout(() => {
-        setMessage('');
-        setMessageType('');
-        setFirstName('');
-        setLastName('');
-        setEmail('');
-        setMobile('');
-        setPassWord('');
-        setUserName('');
-      }, 3000);
-    }
-  }, [message]);
+
+  }, []);
   async function getData() {
     const response = await fetch(
       'http://localhost/php/api.php?action=getAllUsers',
@@ -220,14 +203,11 @@ function AdminHome(props) {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          //Authorization: stringifiedPerson.data.authToken,
-          //&&`Bearer ${stringifiedPerson.data.authToken}`,
         },
       }
     );
     const data = await response.json();
     setUserList(data.users);
-    console.log(data.users, 'users list');
   }
   const requestSearch = (searchValue, items) => {
     if (searchValue.length < 1 || !searchValue) {
@@ -284,66 +264,84 @@ function AdminHome(props) {
     </tr>
   ));
 
+
+  const isNotAdmin = stringifiedPerson === null;
   return (
+
     <>
       <Container fluid>
-        <Row style={{ marginTop: '60px' }}>
-          {!props.menuToggle && (
-            <Col
-              xs={12}
-              md={3}
-              style={{ boxShadow: '1px 0px 5px 0px #403c4329', padding: '0px' }}
+        {isNotAdmin ? (
+
+          <div>
+            <p
             >
-              <ListGroup className='side-menu'>
-                <ListGroup.Item>
-                  <FontAwesomeIcon
-                    icon={faUsers}
-                    style={{ marginRight: '5px' }}
-                  />{' '}
-                  User List
-                </ListGroup.Item>
-              </ListGroup>
+              You dont have persmmison , please login Here
+            </p>
+            <Button
+              variant='link'
+
+              onClick={() => loginNavigate('/login')}
+            >
+              Sign Up
+            </Button>
+          </div>) :
+          <Row style={{ marginTop: '60px' }}>
+            {!props.menuToggle && (
+              <Col
+                xs={12}
+                md={3}
+                style={{ boxShadow: '1px 0px 5px 0px #403c4329', padding: '0px' }}
+              >
+                <ListGroup className='side-menu'>
+                  <ListGroup.Item>
+                    <FontAwesomeIcon
+                      icon={faUsers}
+                      style={{ marginRight: '5px' }}
+                    />{' '}
+                    User List
+                  </ListGroup.Item>
+                </ListGroup>
+              </Col>
+            )}
+            <Col xs={12} md={props.menuToggle ? 12 : 9}>
+              <>
+                {message && (
+                  <Alert
+                    key={messageType}
+                    variant={messageType}
+                    className={'page-message'}
+                    onClose={() => setMessage('')}
+                    dismissible
+                  >
+                    {message}
+                  </Alert>
+                )}
+                <div className='scroll-content'>
+                  <HeaderConnect
+                    menuLink={USERTABLEMENU}
+                    type={'table'}
+                    fluid={true}
+                    inputonChange={(e) => requestSearch(e.target.value, userList)}
+                  />
+                  <Table responsive='xl'>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>User Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>{userData}</tbody>
+                  </Table>
+                </div>
+              </>
             </Col>
-          )}
-          <Col xs={12} md={props.menuToggle ? 12 : 9}>
-            <>
-              {message && (
-                <Alert
-                  key={messageType}
-                  variant={messageType}
-                  className={'page-message'}
-                  onClose={() => setMessage('')}
-                  dismissible
-                >
-                  {message}
-                </Alert>
-              )}
-              <div className='scroll-content'>
-                <HeaderConnect
-                  menuLink={USERTABLEMENU}
-                  type={'table'}
-                  fluid={true}
-                  inputonChange={(e) => requestSearch(e.target.value, userList)}
-                />
-                <Table responsive='xl'>
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>User Name</th>
-                      <th>Email</th>
-                      <th>Phone</th>
-                      {/* <th>Role</th> */}
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>{userData}</tbody>
-                </Table>
-              </div>
-            </>
-          </Col>
-        </Row>
+          </Row>
+        }
       </Container>
 
       {addUserPnl && (
@@ -353,7 +351,7 @@ function AdminHome(props) {
             <FontAwesomeIcon
               icon={faClose}
               className={'panel-close'}
-              onClick={() => () => {
+              onClick={() => {
                 setAddUserPnl(false);
                 setSelectedItem([]);
               }}
@@ -454,12 +452,16 @@ function AdminHome(props) {
             <div className='panel-footer'>
               <div className=' gap-2' style={{ textAlign: 'center' }}>
                 <Button
-                  variant='link'
+                  variant='secondary'
                   size={'sm'}
-                  onClick={() => (setAddUserPnl(false), setSelectedItem([]))}
+                  onClick={() => {
+                    setAddUserPnl(false);
+                    setSelectedItem([]);
+                  }}
                 >
                   Cancel
                 </Button>
+                {''}
                 {selectedItem.userName ? (
                   <Button
                     variant='primary'

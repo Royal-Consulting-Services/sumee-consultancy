@@ -64,10 +64,7 @@ export const MENULINK = [
     key: 'services',
     text: 'Services',
   },
-  // {
-  //     key: "consulting",
-  //     text: "Consulting",
-  // },
+
   {
     key: 'careers',
     text: 'Careers',
@@ -132,32 +129,6 @@ function contentService(item) {
               </div>
             </Col>
           </Row>
-          {/* <Row className='mt-3 mb-3'>
-                        <Col xs={12} md={4} >
-                            <div className='service-img-grid'>
-                                <img src=""/>
-                                <h5>Advisory Consulting</h5>
-                                <p>Ascertain your success from conceptualization to value realization with our holistic perspective and expertise.
-                                </p>
-                            </div>
-                        </Col>
-                        <Col xs={12} md={4} >
-                            <div className='service-img-grid'>
-                            <img src=""/>
-                                <h5>Advisory Consulting</h5>
-                                <p>Ascertain your success from conceptualization to value realization with our holistic perspective and expertise.
-                                </p>
-                            </div>
-                        </Col>
-                        <Col xs={12} md={4} >
-                            <div className='service-img-grid'>
-                            <img src="."/>
-                                <h5>Advisory Consulting</h5>
-                                <p>Ascertain your success from conceptualization to value realization with our holistic perspective and expertise.
-                                </p>
-                            </div>
-                        </Col>
-                    </Row> */}
         </>
       )}
       {item === 'Clinical SAS Programming' && (

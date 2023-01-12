@@ -2,7 +2,7 @@
 @import './fonts//fonts.css';
 
 body {
-  font-size: 16px;
+  font-size: 18px;
   font-family: 'RobotoRegular';
 
   textarea:focus,
@@ -709,7 +709,7 @@ body {
     }
 
     .error-msg {
-      color: #dc3545;
+      color: red;
       margin-bottom: 0px;
       position: absolute;
     }

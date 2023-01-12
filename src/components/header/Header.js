@@ -58,8 +58,6 @@ function Header(props) {
   const url = window.location.pathname;
 
   async function loginSubmit() {
-    console.log(userName, password);
-    // e.preventDefault();
     let item = { userName, password };
     let result = await fetch('http://localhost/php/api.php?action=login', {
       method: 'POST',
@@ -79,7 +77,7 @@ function Header(props) {
       if (userName === 'admin') {
         headerNavigate('/admin');
       } else {
-        headerNavigate('/self');
+        headerNavigate('/user');
       }
     } else {
       setErrMessage(true);
@@ -104,7 +102,6 @@ function Header(props) {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setRegMessage(
           'Successfully Completed Your Registration, You Can Login Now!'
         );
@@ -117,6 +114,18 @@ function Header(props) {
           mobile: '',
           passWord: '',
           role: 'user',
+        });
+      })
+      .catch(() => {
+        setRegMessage('Registration operation failed');
+        props.successMessage('Registration operation failed ');
+        setInputValues({
+          userName: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          mobile: '',
+          passWord: '',
         });
       });
   };
@@ -146,7 +155,6 @@ function Header(props) {
   });
   const menuToggle = () => {
     props.menuClick();
-    console.log(props.menuToggle);
   };
   async function myProfile() {
     setShowProfile(true);
@@ -157,8 +165,6 @@ function Header(props) {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: stringifiedPerson.data.authToken,
-          //&&`Bearer ${stringifiedPerson.data.authToken}`,
         },
       }
     );
@@ -201,7 +207,11 @@ function Header(props) {
                   <Row>
                     <Col xs={12} md={4}>
                       <span className='logo-span'>
-                        <img className='d-block' src={Logo} alt='First slide' />
+                        <img
+                          className='d-block'
+                          src={Logo}
+                          alt='SuMee Consulting'
+                        />
                       </span>
                     </Col>
                     <Col xs={12} md={{ span: 4, offset: 4 }}>
@@ -271,10 +281,7 @@ function Header(props) {
                               </h5>
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                              <Dropdown.Item
-                                href='#'
-                                onClick={() => myProfile()}
-                              >
+                              <Dropdown.Item onClick={() => myProfile()}>
                                 Profile
                               </Dropdown.Item>
                               <Dropdown.Item onClick={() => signOut()}>
@@ -305,11 +312,11 @@ function Header(props) {
               />
             )}
             {headerType === 'adminpage' && (
-              <Navbar.Brand href='#'>
+              <Navbar.Brand href='/admin'>
                 <img
                   className='d-block'
                   src={Logo}
-                  alt='First slide11'
+                  alt='SuMee Consulting'
                   style={{ height: '35px' }}
                 />
               </Navbar.Brand>
@@ -342,7 +349,7 @@ function Header(props) {
                       </h5>
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <Dropdown.Item href='#' onClick={() => myProfile()}>
+                      <Dropdown.Item onClick={() => myProfile()}>
                         Profile
                       </Dropdown.Item>
                       <Dropdown.Item onClick={() => signOut()}>

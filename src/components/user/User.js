@@ -22,7 +22,7 @@ const slides = SLIDERS.map((slider) => {
     </Carousel.Item>
   );
 });
-function SSHome() {
+function User() {
   const [playAuto, setPlayAuto] = useState(false);
   const slideStart = () => {
     setPlayAuto(!playAuto);
@@ -162,4 +162,4 @@ function SSHome() {
   );
 }
 
-export { SSHome };
+export { User };

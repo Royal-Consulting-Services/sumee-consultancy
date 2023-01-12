@@ -22,12 +22,8 @@ function Login(props) {
   );
   const [showPassword, setShowPassword] = useState(false);
   const loginNavigate = useNavigate();
-  const stringifiedPerson = JSON.parse(localStorage.getItem('user-info'));
-  const loginUser = stringifiedPerson?.loggedinUser?.userName;
-  console.log(loginUser);
   async function loginSubmit() {
     if (userName !== '' && password !== '') {
-      console.log(userName, password);
       let item = { userName, password };
       let result = await fetch('http://localhost/php/api.php?action=login', {
         method: 'POST',
@@ -49,7 +45,7 @@ function Login(props) {
           loginNavigate('/admin');
           props.loginCall();
         } else {
-          loginNavigate('/self');
+          loginNavigate('/user');
           props.loginCall();
         }
       } else {

@@ -59,14 +59,13 @@ function Footer(props) {
             <Col xs={12} md={12}>
               <p className='foo-content-text-admin'>
                 Copyright © {new Date().getFullYear()} SuMee Consulting LLC. All
-                Rights Reserved.
+                Rights Reserved
               </p>
             </Col>
           </Row>
         ) : (
           <>
             <Row>
-              <h3 className={'mt-5 mb-5 justify-content-center'}></h3>
               <Col xs={12} md={6}>
                 <p className='foo-content-text'>
                   Stay in the loop. Get the latest insights on growth and

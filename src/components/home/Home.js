@@ -30,7 +30,6 @@ function Home(props) {
   };
 
   const serviceClicked = (e, item) => {
-    console.log(item.title);
     props.clickedItem(item);
   };
 

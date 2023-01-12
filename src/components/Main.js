@@ -13,7 +13,6 @@ import '../css/master.scss';
 function Main() {
   const stringifiedPerson = JSON.parse(localStorage.getItem('user-info'));
   const loginUser = stringifiedPerson?.loggedinUser?.userName;
-  console.log(loginUser);
 
   return (
     <>
@@ -36,7 +35,7 @@ function Main() {
         <Route path='/home' element={<Home />} />
         <Route index element={<Home />} />
         <Route path='/admin' element={<AdminHome />} />
-        <Route path='/self' element={<Home />} />
+        <Route path='/user' element={<Home />} />
         <Route path='/services' element={<Service />} />
       </Routes>
     </>

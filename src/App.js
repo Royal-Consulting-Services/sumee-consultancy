@@ -10,12 +10,11 @@ import { MENULINK, ADMINMENULINK } from './content';
 import { Provider } from 'react-redux';
 import { Contact } from './components/contact';
 import { AboutUs } from './components/about';
-import { Consulting } from './components/consulting';
 
 import { Login } from './components/login';
 import { SignUp } from './components/singUp';
 import { Footer } from './components/footer';
-import { SSHome } from './components/user';
+import { User } from './components/user';
 import { Service } from './components/service';
 import { Careers } from './components/careers';
 
@@ -30,13 +29,11 @@ function App() {
   const [successMsg, setSuccessMsg] = useState('');
   const [serviceClicked, setServiceClicked] = useState({});
   const url = window.location.pathname;
-  console.log(url);
   useEffect(() => {
     setUserLogin(userLogin);
   }, [userLogin]);
   const homeCallback = () => {
     setUserLogin(userLogin);
-    console.log(localStorage.getItem('user-info')?.loggedinUser?.userName);
     window.location.reload();
   };
   useEffect(() => {
@@ -49,12 +46,10 @@ function App() {
   };
   const successMessage = (e) => {
     if (e) setSuccessMsg(e);
-    console.log(e);
   };
   const itemClick = (e) => {
     setServiceClicked(e.id);
     window.location.href = '/services';
-    console.log(serviceClicked);
   };
   return (
     <Provider store={store}>
@@ -104,13 +99,12 @@ function App() {
             />
             <Route index element={<Home />} />
             <Route path='/admin' element={<Admin />} />
-            <Route path='/self' element={<SSHome />} />
+            <Route path='/user' element={<User />} />
             <Route path='/aboutus' element={<AboutUs />} />
             <Route
               path='/services'
               element={<Service serviceSelected={serviceClicked} />}
             />
-            <Route path='/consulting' element={<Consulting />} />
             <Route path='/careers' element={<Careers />} />
             <Route path='/contact' element={<Contact />} />
           </>

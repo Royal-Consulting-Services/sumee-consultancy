@@ -28,9 +28,6 @@ function SignUp(props) {
   });
   const [, setRegMessage] = useState('');
   const loginNavigate = useNavigate();
-  const stringifiedPerson = JSON.parse(localStorage.getItem('user-info'));
-  const loginUser = stringifiedPerson?.loggedinUser?.userName;
-  console.log(loginUser);
   const checkValidation = () => {
     let errors = validation;
 
@@ -94,7 +91,7 @@ function SignUp(props) {
 
   useEffect(() => {
     checkValidation();
-  }, [inputValues]);
+  });
 
   const signupSubmit = () => {
     if (validation.isValid) {
@@ -114,8 +111,7 @@ function SignUp(props) {
         }),
       })
         .then((res) => res.json())
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           setRegMessage(
             'Successfully Completed Your Registration, You Can Login Now!'
           );
@@ -132,14 +128,9 @@ function SignUp(props) {
             passWord: '',
           });
         })
-        .catch((error) => {
-          console.log(error);
-          setRegMessage(
-            'Successfully Completed Your Registration, You Can Login Now!'
-          );
-          props.successMessage(
-            'Successfully Completed Your Registration, You Can Login Now!'
-          );
+        .catch(() => {
+          setRegMessage('Registration operation failed');
+          props.successMessage('Registration operation failed !');
           loginNavigate('/login');
           setInputValues({
             userName: '',
