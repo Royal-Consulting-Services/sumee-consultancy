@@ -321,7 +321,7 @@ function AdminHome(props) {
                   <div  style={{ display: 'flex', justifyContent: 'end' }}>
                     Total users : <Badge bg='secondary'>{users.length}</Badge>
                   </div>
-                  <Table responsive='xl'>
+                  <Table responsive='xl'striped bordered>
                     <thead>
                       <tr>
                         <th># </th>
