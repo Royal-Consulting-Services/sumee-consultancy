@@ -110,21 +110,21 @@ function contentService(item) {
             <Col xs={12} md={4}>
               <div className='service-content-grid'>
                 <div className='service-grid-image'>
-                  <Image src={JavaImg} />
+                  <Image rounded ={true} src={JavaImg} />
                 </div>
               </div>
             </Col>
             <Col xs={12} md={4}>
               <div className='service-content-grid'>
                 <div className='service-grid-image'>
-                  <Image src={Dotnet} />
+                  <Image  rounded ={true} src={Dotnet} />
                 </div>
               </div>
             </Col>
             <Col xs={12} md={4}>
               <div className='service-content-grid'>
                 <div className='service-grid-image'>
-                  <Image src={Scssimg} />
+                  <Image rounded ={true} src={Scssimg} />
                 </div>
               </div>
             </Col>

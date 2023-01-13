@@ -318,7 +318,7 @@ function AdminHome(props) {
                       requestSearch(e.target.value, userList)
                     }
                   />
-                  <div  style={{ display: 'flext', justifyContent: 'end' }}>
+                  <div  style={{ display: 'flex', justifyContent: 'end' }}>
                     Total users : <Badge bg='secondary'>{users.length}</Badge>
                   </div>
                   <Table responsive='xl'>

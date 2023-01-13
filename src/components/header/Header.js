@@ -10,6 +10,7 @@ import {
   Col,
   Dropdown,
   ListGroup,
+  Image
 } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -56,6 +57,8 @@ function Header(props) {
   const [headerType] = useState(props.type);
   const headerNavigate = useNavigate();
   const url = window.location.pathname;
+
+  const isAdmin = userDetails?.loggedinUser?.userName === 'admin'
 
   async function loginSubmit() {
     let item = { userName, password };
@@ -205,7 +208,7 @@ function Header(props) {
                   <Row>
                     <Col xs={12} md={4}>
                       <span className='logo-span'>
-                        <img
+                        <Image rounded ={true}
                           className='d-block'
                           src={Logo}
                           alt='SuMee Consulting'
@@ -221,7 +224,7 @@ function Header(props) {
                               icon={faEnvelope}
                               className='top-con-icon'
                             />
-                            hr@sumeeconsulting.com
+                            <a href='mailto:hr@sumeeconsulting.com'>hr@sumeeconsulting.com</a>
                           </ListGroup.Item>
                           <ListGroup.Item>
                             {' '}
@@ -229,7 +232,7 @@ function Header(props) {
                               icon={faEnvelope}
                               className='top-con-icon'
                             />
-                            info@sumeeconsulting.com
+                             <a href='mailto:info@sumeeconsulting.com'>info@sumeeconsulting.com</a>
                           </ListGroup.Item>
                         </ListGroup>
                         {headerType !== 'selfpage' && (
@@ -311,7 +314,7 @@ function Header(props) {
             )}
             {headerType === 'adminpage' && (
               <Navbar.Brand href='/admin'>
-                <img
+                <Image
                   className='d-block'
                   src={Logo}
                   alt='SuMee Consulting'
@@ -343,7 +346,7 @@ function Header(props) {
                     >
                       <FontAwesomeIcon icon={faUser} className='profile-icon' />
                       <h5 className='profile-username'>
-                        {props?.loggedin?.loggedinUser?.userName}
+                       {props?.loggedin?.loggedinUser?.userName}
                       </h5>
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
@@ -597,7 +600,7 @@ function Header(props) {
                 className={'panel-close'}
                 onClick={() => setShowProfile(false)}
               />
-              <h4 className='panel-header content-heading'>User Profile</h4>
+              <h4 className='panel-header content-heading'>{isAdmin ?  'Admin Profile' :'User Profile'}</h4>
               <div className='panel-content'>
                 <Row>
                   <Col xs={6} md={{ span: 12 }}>

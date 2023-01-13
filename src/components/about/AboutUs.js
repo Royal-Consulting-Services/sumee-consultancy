@@ -18,7 +18,7 @@ function AboutUs() {
         </h3>
         <Row className={'mb-5'}>
           <Col xs={12} md={6}>
-            <img className='d-block w-100' src={Aboutusimg} alt='First slide' />
+          <Image rounded ={true} className='d-block w-100' src={Aboutusimg} alt='First slide' />
           </Col>
           <Col xs={12} md={6}>
             SuMee Consulting LLC is the professional technology solutions
@@ -148,7 +148,7 @@ function AboutUs() {
             </Row>
           </Col>
           <Col xs={12} md={6}>
-            <img className='d-block w-100' src={Coreimg} alt='First slide' />
+          <Image rounded ={true}  className='d-block w-100' src={Coreimg} alt='core of SuMee Consulting LLC' />
           </Col>
         </Row>
       </Container>
@@ -163,9 +163,10 @@ function AboutUs() {
                     <p className='help-content'>
                       Fill out the short form on our{' '}
                       <a href='/contact'>Contact Us</a> page give us call
-                      directly on <a href='/contact'>+1 678-384-9757</a> or
+                      directly on <a href='tel: +1 678-384-9757'>+1 678-384-9757</a>
+                       or
                       email us at{' '}
-                      <a href='/contact'> info@sumeeconsulting.com</a> We’ll
+                      <a href='mailto: info@sumeeconsulting.com'>info@sumeeconsulting.com</a> We’ll
                       guide you through our process, advise on the best possible
                       solutions and steer you in the right direction.{' '}
                     </p>

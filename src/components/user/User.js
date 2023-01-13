@@ -14,7 +14,7 @@ import { Blog1, Blog2, Aboutusimg, Blog3 } from '../../images/images';
 const slides = SLIDERS.map((slider) => {
   return (
     <Carousel.Item key={slider.src} variant='dark'>
-      <img className='d-block w-100' src={slider.src} alt='First slide' />
+     <Image fluid ={true} className='d-block w-100' src={slider.src} alt='SuMee Consulting LLC' />
       <Carousel.Caption>
         <h3>{slider.captionText}</h3>
         <p>{slider.captionHeader}</p>

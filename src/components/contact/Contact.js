@@ -13,7 +13,7 @@ function Contact() {
   return (
     <>
       <div className='page-banner'>
-        <Image src={ContactBnr} />
+        <Image  src={ContactBnr} />
       </div>
       <Container>
         <h3 className={'mt-5 mb-5 content-heading'}>
@@ -41,9 +41,9 @@ function Contact() {
               <Card.Body>
                 <FontAwesomeIcon icon={faPhone} className='contact-icon' />
                 <address>
-                  +1 678-399-2963
+                  <a href='tel:+1 678-399-2963'>+1 678-399-2963</a>
                   <br />
-                  +1 678-384-9757
+                  <a href='tel:+1 678-384-9757'>+1 678-384-9757</a>
                 </address>
               </Card.Body>
             </Card>
@@ -53,9 +53,9 @@ function Contact() {
               <Card.Body>
                 <FontAwesomeIcon icon={faGlobe} className='contact-icon' />
                 <address>
-                  hr@sumeeconsulting.com
+                  <a href='mailto:hr@sumeeconsulting.com'>hr@sumeeconsulting.com</a>
                   <br />
-                  info@sumeeconsulting.com
+                  <a href='mailto:info@sumeeconsulting.com'>info@sumeeconsulting.com</a>
                 </address>
               </Card.Body>
             </Card>

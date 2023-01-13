@@ -153,7 +153,7 @@ function SignUp(props) {
         onClick={() => loginNavigate('/')}
       />
       <div className='overlay'></div>
-      <Image src={LoginLogoutBnr} className='backgrnd-img' />
+      <Image  src={LoginLogoutBnr} className='backgrnd-img' />
       <div className='login-form-content'>
         <Row>
           <Col xs={12} md={{ span: 6, offset: 3 }}>
@@ -285,8 +285,7 @@ function SignUp(props) {
             </p>
             <div className='d-grid gap-2'>
               <Button
-                variant='link'
-                style={{ color: '#ffffff', fontSize: '25px' }}
+                variant='outline-primary'
                 onClick={() => loginNavigate('/login')}
               >
                 Login

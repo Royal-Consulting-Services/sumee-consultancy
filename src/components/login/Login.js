@@ -140,8 +140,7 @@ function Login(props) {
             </p>
             <div className='d-grid gap-2'>
               <Button
-                variant='link'
-                style={{ color: '#ffffff', fontSize: '25px' }}
+                variant='outline-primary'
                 onClick={() => loginNavigate('/signup')}
               >
                 Sign Up
