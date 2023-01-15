@@ -42,7 +42,7 @@ function Footer(props) {
         <Row>
           <Col xs={12} md={12}>
             <p className='foo-content-text-admin'>
-              Copyright © {new Date().getFullYear()} SuMee Consulting LLC. All
+              Copyright © {new Date().getFullYear()} SuMee Software Consulting LLC. All
               Rights Reserved
             </p>
           </Col>

@@ -21,7 +21,7 @@ function AboutUs() {
           <Image rounded ={true} className='d-block w-100' src={Aboutusimg} alt='First slide' />
           </Col>
           <Col xs={12} md={6}>
-            SuMee Consulting LLC is the professional technology solutions
+            SuMee Software Consulting LLC is the professional technology solutions
             company, providing a wide range of consulting, solutions & platforms
             serving enterprises of all sizes, across various industries. SuMee
             Consulting LLC was founded with the goal to ‘stand out’ for ‘premium
@@ -148,7 +148,7 @@ function AboutUs() {
             </Row>
           </Col>
           <Col xs={12} md={6}>
-          <Image rounded ={true}  className='d-block w-100' src={Coreimg} alt='core of SuMee Consulting LLC' />
+          <Image rounded ={true}  className='d-block w-100' src={Coreimg} alt='core of SuMee Software Consulting LLC' />
           </Col>
         </Row>
       </Container>

@@ -40,7 +40,7 @@ function Service(props) {
                   <Tab.Pane eventKey={item.id}>
                     <div className='service-tab-content'>
                       <h5>{item.title}</h5>
-                      <Image rounded ={true} src={item.image} className='bnr-image' alt="SuMee Consulting LLC service" />
+                      <Image rounded ={true} src={item.image} className='bnr-image' alt="SuMee Software Consulting LLC" />
                     </div>
                     <div>{item.content}</div>
                   </Tab.Pane>

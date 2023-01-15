@@ -14,7 +14,7 @@ import { Blog1, Blog2, Aboutusimg, Blog3 } from '../../images/images';
 const slides = SLIDERS.map((slider) => {
   return (
     <Carousel.Item key={slider.src} variant='dark'>
-     <Image fluid ={true} className='d-block w-100' src={slider.src} alt='SuMee Consulting LLC' />
+     <Image fluid ={true} className='d-block w-100' src={slider.src} alt='SuMee Software Consulting LLC' />
       <Carousel.Caption>
         <h3>{slider.captionText}</h3>
         <p>{slider.captionHeader}</p>
@@ -49,7 +49,7 @@ function User() {
             <img className='d-block w-100' src={Aboutusimg} alt='First slide' />
           </Col>
           <Col xs={12} md={6}>
-            SuMee Consulting LLC is the professional technology solutions
+            SuMee Software Consulting LLC is the professional technology solutions
             company, providing a wide range of consulting, solutions & platforms
             serving enterprises of all sizes, across various industries. SuMee
             Consulting LLC was founded with the goal to ‘stand out’ for ‘premium
