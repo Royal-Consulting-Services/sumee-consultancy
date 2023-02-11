@@ -28,9 +28,9 @@ function Contact() {
                   className='contact-icon'
                 />
                 <address>
-                  3240, Caney Estates PI,
+                  2972, Webb Bridge Rd
                   <br />
-                  Cumming, 30041, GA
+                  Alpharetta, 30009, GA
                   <br />
                 </address>
               </Card.Body>
