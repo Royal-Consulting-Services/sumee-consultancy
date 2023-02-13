@@ -22,7 +22,7 @@ function AboutUs() {
           </Col>
           <Col xs={12} md={6}>
             SuMee Software Consulting LLC is the professional technology solutions
-            company, providing a wide range of consulting, solutions & platforms
+            company, We are specialized in LMS, providing a wide range of consulting, solutions & platforms
             serving enterprises of all sizes, across various industries. SuMee
             Consulting LLC was founded with the goal to ‘stand out’ for ‘premium
             quality’ technology solutions using trending digital technologies
