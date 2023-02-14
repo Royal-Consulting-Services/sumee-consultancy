@@ -562,6 +562,24 @@ body {
     }
   }
 }
+.highlight-list{
+  list-style-type: none;
+  li{
+    padding: 10px 0px;
+  }
+}
+
+.salient-list{
+  li{
+    display: inline-block;
+    width: 33%;
+    .list-icon{
+      font-size: 14px;
+      padding: 3px;
+      color:#b2dafd;
+    }
+  }
+}
 
 .about-cont-card {
   .about-icon {
@@ -756,6 +774,17 @@ body {
   .header-top-small {
     display: none;
   }
+  .salient-list{
+    li{
+      display: inline-block;
+      width: 100%;
+      .list-icon{
+        font-size: 14px;
+        padding: 3px;
+        color:#b2dafd;
+      }
+    }
+  }
 
   .header-top {
     .top-contact-div {
@@ -846,6 +875,17 @@ body {
 @media only screen and (max-width: 768px) {
   .header-top-small {
     display: none;
+  }
+  .salient-list{
+    li{
+      display: inline-block;
+      width: 100%;
+      .list-icon{
+        font-size: 14px;
+        padding: 3px;
+        color:#b2dafd;
+      }
+    }
   }
 
   .header-top {
