@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'react-bootstrap/Image';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 function Contact() {
   return (
@@ -19,6 +20,7 @@ function Contact() {
         <h3 className={'mt-5 mb-5 content-heading'}>
           <span>Contact</span>
         </h3>
+        <ScrollAnimation animateIn='slideInUp' initiallyVisible>
         <Row>
           <Col xs={12} md={4}>
             <Card className='contact-card'>
@@ -61,6 +63,7 @@ function Contact() {
             </Card>
           </Col>
         </Row>
+        </ScrollAnimation>
       </Container>
     </>
   );
