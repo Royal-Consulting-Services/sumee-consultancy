@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Container, Row, Col, ListGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
-
+import { MENULINK } from '../../content';
 function Footer(props) {
   const [showBtn, setShowBtn] = useState('hidden-btn');
   const url = window.location.pathname;
@@ -55,15 +55,15 @@ function Footer(props) {
     return (
       <Container fluid className='main-footer mt-5'>
         <>
-        <Button
-          variant='link'
-          onClick={topFunction}
-          id='myBtn'
-          className={showBtn}
-          title='Go to top'
-        >
-          <FontAwesomeIcon icon={faChevronCircleUp} className='Edit-icon' />
-        </Button>
+          <Button
+            variant='link'
+            onClick={topFunction}
+            id='myBtn'
+            className={showBtn}
+            title='Go to top'
+          >
+            <FontAwesomeIcon icon={faChevronCircleUp} className='Edit-icon' />
+          </Button>
           <Row>
             <Col xs={12} md={6}>
               <p className='foo-content-text'>
@@ -82,32 +82,21 @@ function Footer(props) {
           <Row className='mt-5 pb-5'>
             <Col xs={12} md={12}>
               <ListGroup horizontal className='foo-menu-link'>
-                <ListGroup.Item>
-                  <Button variant='link' href='/'>
-                    Home
-                  </Button>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <Button variant='link' href='/aboutus'>
-                    About Us
-                  </Button>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  {' '}
-                  <Button variant='link' href='/services'>
-                    Services
-                  </Button>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <Button variant='link' href='/careers'>
-                    Careers
-                  </Button>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <Button variant='link' href='/contact'>
-                    Contact
-                  </Button>
-                </ListGroup.Item>
+                {MENULINK.map((menu) => {
+                  return (
+                    <ListGroup.Item>
+                      <Button
+                        variant='link'
+                        href={menu.key}
+                        className={
+                          menu.key === props.selectedMenu ? 'active' : ''
+                        }
+                      >
+                        {menu.text}
+                      </Button>
+                    </ListGroup.Item>
+                  );
+                })}
               </ListGroup>
             </Col>
           </Row>
