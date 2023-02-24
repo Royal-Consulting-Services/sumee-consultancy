@@ -119,7 +119,7 @@ function App() {
             element={<SignUp successMessage={(e) => successMessage(e)} />}
           />
         </Routes>
-        <Footer type={userLogin === 'admin' ? true : false} />
+        <Footer type={userLogin === 'admin' ? true : false} selectedMenu={url === '/' ? 'home' : url.replace('/', '')}/>
       </BrowserRouter>
     </Provider>
   );
