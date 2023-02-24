@@ -4,6 +4,7 @@ import { SERVICES } from '../../content';
 import { Webervicebnr } from '../../images/images';
 
 import Image from 'react-bootstrap/Image';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 function Service(props) {
   return (
@@ -38,11 +39,13 @@ function Service(props) {
               <Tab.Content>
                 {SERVICES.map((item) => (
                   <Tab.Pane eventKey={item.id}>
+                    <ScrollAnimation animateIn='slideInUp' initiallyVisible>
                     <div className='service-tab-content'>
                       <h5>{item.title}</h5>
                       <Image rounded ={true} src={item.image} className='bnr-image' alt="SuMee Software Consulting LLC" />
                     </div>
                     <div>{item.content}</div>
+                    </ScrollAnimation>
                   </Tab.Pane>
                 ))}
               </Tab.Content>
