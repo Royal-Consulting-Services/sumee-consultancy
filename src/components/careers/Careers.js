@@ -4,6 +4,7 @@ import { Careerbnr } from '../../images/images';
 import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'react-bootstrap/Image';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 function careerDescribcont() {
   return (
@@ -78,7 +79,6 @@ function Careers() {
         <h3 className={'mt-5 mb-5 content-heading'}>
           <span>Careers</span>
         </h3>
-
         <Row className='career-nav'>
           <Col xs={12} md={4}>
             <ListGroup>
@@ -86,6 +86,7 @@ function Careers() {
             </ListGroup>
           </Col>
           <Col xs={12} md={8}>
+          <ScrollAnimation animateIn='slideInUp' initiallyVisible>
             <Card className='career-card'>
               <Card.Body>
                 <Card.Text>
@@ -322,6 +323,7 @@ function Careers() {
                 </Card.Text>
               </Card.Body>
             </Card>
+            </ScrollAnimation>
           </Col>
         </Row>
       </Container>
