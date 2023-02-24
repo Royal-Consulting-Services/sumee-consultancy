@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ScrollAnimation from 'react-animate-on-scroll';
 import {
   Carousel,
   Container,
@@ -45,6 +46,7 @@ function Home(props) {
         </Carousel>
       </div>
       <Container>
+      <ScrollAnimation animateIn='flipInX' initiallyVisible>
         <h3 className={'mt-5 mb-5 content-heading'}>
           <span>About Us</span>
         </h3>
@@ -73,12 +75,14 @@ function Home(props) {
             business challenges.
           </Col>
         </Row>
+        </ScrollAnimation>
         <Row style={{ marginTop: '50px' }}>
           <h3 className={'mt-5 mb-5 content-heading'}>
             <span>Services</span>
           </h3>
-          {SERVICES.map((item) => (
-            <Col xs={12} md={3} style={{ padding: '0px' }}>
+          {SERVICES.map((item,index) => (
+            <Col xs={12} md={3} style={{ padding: '0px' }} >
+              <ScrollAnimation animateIn='slideInUp' delay={`${index+1}50`}>
               <Card
                 className='technology-card'
                 onClick={(e) => serviceClicked(e, item)}
@@ -95,10 +99,11 @@ function Home(props) {
                   </Card.Text>
                 </Card.Body>
               </Card>
+              </ScrollAnimation>
             </Col>
           ))}
         </Row>
-      
+        <ScrollAnimation animateIn='flipInY'>
         <Row>
           <h3 className={'mt-5 mb-5 content-heading'}>
             <span>Why our clients chose us?</span>
@@ -151,6 +156,7 @@ function Home(props) {
             </Card>
           </Col>
         </Row>
+        </ScrollAnimation>
       </Container>
     </>
   );
