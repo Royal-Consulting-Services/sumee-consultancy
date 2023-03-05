@@ -43,11 +43,16 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
-  color: #b2dafd;
+  color: #242424 ;
 
   span {
     margin: 0px 20px;
   }
+}
+
+.content-company-name{
+  color: #b4dcfc;
+  font-family: "RobotoBold";
 }
 
 .content-heading::before,
@@ -73,7 +78,7 @@ body {
 
   .nav-link.active,
   .nav-link:hover {
-    border-bottom: solid 3px #b2dafd;
+    border-bottom: solid 3px #b4dcfc;
   }
 }
 
@@ -286,6 +291,17 @@ body {
         color: $lightColor;
         white-space: nowrap;
         text-decoration: none;
+        border-radius: 0px;
+        min-width: auto;
+        padding: 0px 8px;
+      }
+
+      .btn:hover {
+        border-bottom: solid 3px #b2dafd;
+      }
+
+      .btn.active {
+        border-bottom: solid 3px #b2dafd;
       }
     }
   }
@@ -439,12 +455,12 @@ body {
       }
 
       &:hover {
-        background: #b2dafd;
+        background: #b4dcfc;
       }
     }
 
     a.nav-link.active {
-      background: #b2dafd;
+      background: #b4dcfc;
     }
   }
 }
@@ -522,10 +538,10 @@ body {
     }
 
     .header-button {
-      background: #b2dafd;
-      color: #040404;
-      border: #b2dafd;
-      border-radius: 3px;
+      background: #b4dcfc;
+      color: #24245c;
+      border: #b4dcfc;
+      border-radius: 30px;
     }
   }
 
@@ -693,6 +709,12 @@ body {
 
   .login-form-content {
     margin-top: 5%;
+  .btn.btn-primary{
+    border-radius: 36PX;
+    }
+  .btn.btn-outline-primary{
+    border-radius: 36PX;
+    }
   }
 }
 
@@ -735,6 +757,13 @@ body {
       margin-bottom: 0px;
       position: absolute;
     }
+    .btn.btn-primary{
+      border-radius: 36PX;
+      }
+    .btn.btn-outline-primary{
+      border-radius: 36PX;
+      }
+
   }
 }
 
