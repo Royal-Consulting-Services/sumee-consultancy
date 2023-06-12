@@ -30,9 +30,11 @@ function Contact() {
                   className='contact-icon'
                 />
                 <address>
-                  2972, Webb Bridge Rd
-                  <br />
-                  Alpharetta, 30009, GA
+                  40 Technology Parkway South,
+                    <br />
+                  Ste 180-B
+                    <br />
+                  Norcross, Georgia 30092-2906
                   <br />
                 </address>
               </Card.Body>
